@@ -11,6 +11,9 @@ class LoginTest < Minitest::Test
   include Capybara::DSL
   def test_login
     visit '/'
-    debugger
+    fill_in 'username', with: ENV['username']
+    fill_in 'password', with: ENV['password']
+    click_on "Log in"
+    assert page.has_content? 'Overview'
   end
 end
