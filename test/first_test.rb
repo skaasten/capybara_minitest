@@ -7,10 +7,10 @@ require 'capybara-webkit'
 
 
 Capybara.run_server = false
-Capybara.current_driver = :webkit
+Capybara.current_driver = :selenium
 Capybara.app_host = 'http://shaunfirst.freshbooks.com'
 
-class LoginTest < Minitest::Test
+class FirstTest < Minitest::Test
   include Capybara::DSL
 
   def test_login
