@@ -3,10 +3,11 @@ require 'capybara'
 require 'capybara/dsl'
 require 'byebug'
 require 'faker'
+require 'capybara-webkit'
 
 
 Capybara.run_server = false
-Capybara.current_driver = :selenium
+Capybara.current_driver = :webkit
 Capybara.app_host = 'http://shaunfirst.freshbooks.com'
 
 class LoginTest < Minitest::Test
@@ -25,7 +26,7 @@ class LoginTest < Minitest::Test
     fill_in 'email', with: Faker::Internet.email
     fill_in 'fname', with: Faker::Name.first_name
     fill_in 'lname', with: Faker::Name.last_name
-    click_on "Save"
+    click_on 'Save'
     assert page.has_content? 'Your client has been created.'
   end
 end
